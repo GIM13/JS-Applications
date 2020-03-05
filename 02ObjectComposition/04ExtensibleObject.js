@@ -6,7 +6,7 @@ function solve() {
 
                 if (typeof object[el] === `function`) {
 
-                    Object.getPrototypeOf(extensibleObject)[el] = object[el];
+                    Object.prototype[el] = object[el];
 
                 } else {
 
