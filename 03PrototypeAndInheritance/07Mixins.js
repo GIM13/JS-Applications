@@ -4,12 +4,12 @@ function solve() {
 
         classToExtend.prototype.getQuality = function () {
 
-            return (this.rocessorSpeed
+            return (this.processorSpeed
                 + this.ram
                 + this.hardDiskSpace) / 3;
         }
 
-        classToExtend.prototype.isFast = () => {
+        classToExtend.prototype.isFast = function () {
 
             if (this.processorSpeed > (this.ram / 4)) {
 
@@ -19,7 +19,7 @@ function solve() {
             return false;
         }
 
-        classToExtend.prototype.isRoomy = () => {
+        classToExtend.prototype.isRoomy = function () {
 
             if (this.hardDiskSpace > Math.floor(this.ram * this.processorSpeed)) {
 
@@ -33,10 +33,10 @@ function solve() {
 
     function styleMixin(classToExtend) {
 
-        function isFullSet() {
+        classToExtend.prototype.isFullSet = function () {
 
-            if (classToExtend.manufacturer === classToExtend.keyboard.manufacturer
-                && classToExtend.manufacturer === classToExtend.monitor.manufacturer) {
+            if (this.manufacturer === this.keyboard.manufacturer
+                && this.manufacturer === this.monitor.manufacturer) {
 
                 return true;
             }
@@ -44,12 +44,12 @@ function solve() {
             return false;
         }
 
-        function isClassy() {
+        classToExtend.prototype.isClassy = function () {
 
-            if (classToExtend.battery.expectedLife >= 3
-                && (classToExtend.color === "Silver"
-                    || classToExtend.color === "Black")
-            ) {
+            if (this.battery.expectedLife >= 3
+                && (this.color === "Silver"
+                    || this.color === "Black")
+                && this.weight < 3) {
 
                 return true;
             }
